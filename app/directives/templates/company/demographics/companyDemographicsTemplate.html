@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="form-group col-md-8" show-errors>
+    <label class="control-label required" for="companyName">Company Name</label>
+    <input class="form-control" id="companyName" name="companyName" ng-model="company.name" placeholder="Company Name" required type="text">
+    <div ng-messages="form.companyName.$error" ng-if="form.companyName.$dirty || form.$submitted">
+        <div class="help-block" ng-message="required">Company Name is required.</div>
+    </div>
+  </div>
+  <div class="form-group col-md-4">
+    <label class="control-label" for="shortName">Short Name</label>
+    <input class="form-control" id="shortName" ng-model="company.shortName" placeholder="Short Name" type="text">
+  </div>
+</div>
+<div class="row">
+  <div class="form-group col-md-4" show-errors>
+    <label class="control-label required" for="stateOfIncorp">State of Incorporation</label>
+    <ui-select name="stateOfIncorp" ng-model="company.state_id" theme="bootstrap" required>
+      <ui-select-match placeholder="Select a State of Incorporation...">{{$select.selected.state_desc}}</ui-select-match>
+      <ui-select-choices repeat="state.id as state in statesList | filter: $select.search">
+        <div ng-bind-html="state.state_desc | highlight: $select.search"></div>
+      </ui-select-choices>
+    </ui-select>
+    <div ng-messages="form.stateOfIncorp.$error" ng-if="form.stateOfIncorp.$dirty || form.$submitted">
+        <div class="help-block" ng-message="required">State of Incorporation is Required.</div>
+    </div>
+  </div>
+  <div class="form-group col-md-4">
+    <label class="control-label" for="countryOfIncorp">Country of Incorporation</label>
+    <ui-select ng-model="company.country_id" theme="bootstrap">
+      <ui-select-match allow-clear="true" placeholder="Select a Country of Incorporation...">{{$select.selected.country_desc}}</ui-select-match>
+      <ui-select-choices repeat="country.id as country in countriesList | filter: $select.search">
+        <div ng-bind-html="country.country_desc | highlight: $select.search"></div>
+      </ui-select-choices>
+    </ui-select>
+  </div>
+  <div class="form-group col-md-4">
+    <date-input calendar-properties="calendarProperties" ng-model="company.date_of_incorp"
+            name="dateOfIncorp" date-id="dateOfIncorpId" date-label="Date of Incorporation"></date-input>
+  </div>
+</div>
+<div class="row">
+  <div class="form-group col-md-4">
+    <fein-input ng-model="company.fein"></fein-input>
+  </div>
+  <div class="form-group col-md-4" show-errors>
+    <label class="control-label required" for="domicileType">Domicile Type</label>
+    <ui-select name="domicileType" ng-model="company.domicile_type_id" theme="bootstrap" required>
+      <ui-select-match placeholder="Select a Domicile Type...">{{$select.selected.domicile_type_desc}}</ui-select-match>
+      <ui-select-choices repeat="domicile_type.id as domicile_type in domicileTypesList | filter: $select.search">
+        <div ng-bind-html="domicile_type.domicile_type_desc | highlight: $select.search"></div>
+      </ui-select-choices>
+    </ui-select>
+    <div ng-messages="form.domicileType.$error" ng-if="form.domicileType.$dirty || form.$submitted">
+        <div class="help-block" ng-message="required">Domicile Type is Required.</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="row col-md-12">
+  <form novalidate>
+    <div class="row">
+      <div class="form-group col-md-8">
+        <label for="companyName">Company Name</label>
+        <input class="form-control" id="companyName" ng-model="companySearchCtrl.searchCriteria.name" placeholder="Company Name" type="text">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="companyType">Company Type</label>
+        <ui-select ng-model="companySearchCtrl.searchCriteria.company_type" theme="bootstrap">
+          <ui-select-match allow-clear="true" placeholder="Select a Company Type...">{{$select.selected.company_type_desc}}</ui-select-match>
+          <ui-select-choices repeat="companyType.company_type_code as companyType in companySearchCtrl.companyTypesList | filter: $select.search">
+            <div ng-bind-html="companyType.company_type_desc | highlight: $select.search"></div>
+          </ui-select-choices>
+        </ui-select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-4">
+        <label for="companyNumber">Company Number</label>
+        <input class="form-control" id="companyNumber" ng-model="companySearchCtrl.searchCriteria.id" type="text">
+      </div>
+      <div class="form-group col-md-4">
+        <fein-input ng-model="companySearchCtrl.searchCriteria.fein"></fein-input>
+      </div>
+      <div class="form-group col-md-4">
+        <date-input ng-model="companySearchCtrl.searchCriteria.date_of_incorp" date-id="dateOfIncorp" date-label="Date of Incorporation"></date-input>
+      </div>
+    </div>
+    <button class="btn btn-default" ng-click="companySearchCtrl.search()" type="submit">Search</button>
+  </form>
+</div>
+<div class="row col-md-12 row-spacer" ng-hide="companySearchCtrl.hideGrid">
+  <div class="no-border" ui-grid-auto-resize ui-grid="companySearchCtrl.gridOptions">
+    <div class="watermark" ng-show="!companySearchCtrl.gridOptions.data.length">No results found!</div>
+  </div>
+</div>

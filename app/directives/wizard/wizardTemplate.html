@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-12">
+    <ng-form name="{{ wizardCtrl.parent.formName }}" novalidate>
+      <div class="row">
+        <div class="stepwizard">
+          <div class="stepwizard-row">
+            <div class="stepwizard-step" ng-repeat="view in wizardCtrl.parent.views.data">
+              <button class="btn btn-circle" ng-class="view.active ? 'btn-primary' : 'btn-default'" ng-click="wizardCtrl.setCurrentView(view, wizardCtrl.parent.formName)" ng-disabled="view.disabled" type="button">{{ $index + 1 }}</button>
+              <p>{{ view.name }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-primary row-spacer-20">
+        <div class="panel-heading">{{ wizardCtrl.currentView.name }}</div>
+        <div class="panel-body">
+          <ng-include src="wizardCtrl.currentView.url"></ng-include>
+        </div>
+      </div>
+      <div class="btn-group" role="group">
+        <button class="btn btn-default" ng-click="wizardCtrl.previous()" ng-disabled="wizardCtrl.previousDisabled">Previous</button>
+        <button class="btn btn-default" ng-click="wizardCtrl.next(wizardCtrl.parent.formName)" ng-disabled="wizardCtrl.index === (wizardCtrl.parent.views.data.length - 1)">Next</button>
+        <button class="btn btn-default" ng-click="wizardCtrl.isFormValid(wizardCtrl.parent.formName) && wizardCtrl.parent.finish()" ng-disabled="wizardCtrl.finishDisabled">Finish</button>
+        <button class="btn btn-default" ui-sref="home.dashboard">Cancel</button>
+      </div>
+    </ng-form>
+  </div>
+</div>

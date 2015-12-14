@@ -1,0 +1,10 @@
+<form>
+  <label for="stateSelect"> Select a state: </label>
+  <select name="stateSelect" id="stateSelect"
+          ng-model="homeCtrl.selectedState"
+          ng-change="homeCtrl.setSelectedState(homeCtrl.selectedState)">
+    <option style="display:none" value="">Select a state...</option>
+    <option ng-repeat="state in homeCtrl.states" value="{{ state.id }}">{{ state.state_desc }}</option>
+  </select>
+</form>
+<tt>state selected: {{ homeCtrl.selectedState }}</tt>

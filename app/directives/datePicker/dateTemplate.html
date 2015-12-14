@@ -1,0 +1,9 @@
+<label class="control-label" ng-class="{'required': isRequired}" for="{{ dateId }}">{{ dateLabel }}</label>
+<p class="input-group">
+  <input id="{{ dateId }}" name="{{ name }}" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="ngModel"
+         ng-click="open($event)" is-open="opened" datepicker-options="dateOptions" ng-required="isRequired" min-date="minDate" max-date="maxDate"
+         on-open-focus="false" close-text="Close" datepicker-append-to-body="true" />
+  <span class="input-group-btn">
+    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+  </span>
+</p>

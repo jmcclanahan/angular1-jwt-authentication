@@ -1,0 +1,4 @@
+<h1>Companies By State</h1>
+<ul ng-repeat="company in companiesCtrl.companies">
+  <li>{{ company.id }} - {{ company.name }} - {{ company.state.state_desc }} - {{ company.domicile_type.domicile_type_desc }}</li>
+</ul>

@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="form-group col-md-4">
+    <label for="lob">Line of Business</label>
+    <ui-select ng-model="lob.lobType" theme="bootstrap">
+      <ui-select-match allow-clear="true" placeholder="Select a Line of Business...">{{$select.selected.line_type_desc}}</ui-select-match>
+      <ui-select-choices repeat="lob as lob in lineTypesList | filter: $select.search">
+        <div ng-bind-html="lob.line_type_desc | highlight: $select.search"></div>
+      </ui-select-choices>
+    </ui-select>
+  </div>
+  <div class="form-group col-md-4">
+    <date-input ng-model="lob.effective_date" date-id="effectiveDate" date-label="Effective Date"></date-input>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <button class="btn btn-primary" id="addRow" ng-click="addLob()" type="button">Add Lob</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="no-border" ui-grid="lobGridOptions"></div>
+  </div>
+</div>

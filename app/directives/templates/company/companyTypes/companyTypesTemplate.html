@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="form-group col-md-4" show-errors>
+    <label class="control-label required" for="companyType">Company Type</label>
+    <ui-select name="companyType" ng-model="companyAuthority.company_type_id" theme="bootstrap" required>
+      <ui-select-match placeholder="Select a Company Type...">{{$select.selected.company_type_desc}}</ui-select-match>
+      <ui-select-choices repeat="companyType.id as companyType in companyTypesList | filter: $select.search">
+        <div ng-bind-html="companyType.company_type_desc | highlight: $select.search"></div>
+      </ui-select-choices>
+    </ui-select>
+    <div ng-messages="form.companyType.$error" ng-if="form.companyType.$dirty || form.$submitted">
+        <div class="help-block" ng-message="required">Company Type is Required.</div>
+    </div>
+  </div>
+  <div class="form-group col-md-4" show-errors>
+    <date-input ng-model="companyAuthority.effective_date" is-required="true"
+      name="effectiveDate" date-id="effectiveDateId" date-label="Effective Date"></date-input>
+      <div ng-messages="form.effectiveDate.$error" ng-show="form.effectiveDate.$dirty || form.$submitted">
+          <div class="help-block" ng-message="required">Effective Date is Required.</div>
+      </div>
+  </div>
+  <div class="form-group col-md-4">
+    <date-input ng-model="companyAuthority.expiration_date" date-id="expirationDateId" date-label="Expiration Date"
+      name="exiprationDate" min-date="companyAuthority.effectiveDate"></date-input>
+  </div>
+</div>
+<div class="row">
+  <div class="form-group col-md-4">
+    <date-input ng-model="companyAuthority.issue_date"
+      date-id="issueDate" date-label="Issue Date"></date-input>
+  </div>
+</div>
