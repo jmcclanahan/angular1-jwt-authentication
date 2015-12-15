@@ -21,10 +21,15 @@ angular.module('solarFrontendApp')
         $scope.lobGridOptions = {};
         $scope.lobs = [];
         $scope.lob = {};
+        $scope.showUpdate = false;
 
         $scope.lobGridOptions.columnDefs = [
           { name: 'lobType.line_type_desc', displayName: 'Line of Business', width: '60%' },
-          { name: 'effective_date', displayName: 'Effective Date', type: 'date', cellFilter: 'date:\'MM/dd/yyyy\'', width: '35%' }
+          { name: 'effective_date', displayName: 'Effective Date', type: 'date', cellFilter: 'date:\'MM/dd/yyyy\'', width: '32%' },
+          { name: 'Edit', displayName: '', enableSorting: false,
+            cellTemplate: '<button class="btn btn-primary" ng-click="grid.appScope.lob = row.entity; grid.appScope.showUpdate = true"><i class="glyphicon glyphicon-pencil"></i></button>', width: '4%' },
+          { name: 'Delete', displayName: '', enableSorting: false,
+            cellTemplate: '<button class="btn btn-danger" ng-click="grid.appScope.removeLob(row.entity)"><i class="glyphicon glyphicon-trash"></i></button>', width: '4%' }
         ];
 
         $scope.calendarProperties = {
@@ -42,7 +47,23 @@ angular.module('solarFrontendApp')
           });
 
           //clear form
-          $scope.lob = undefined;
+          $scope.lob = {};
+        }
+
+        $scope.removeLob = function(lobToRemove) {
+          var index = $scope.lobGridOptions.data.indexOf(lobToRemove);
+          $scope.lobGridOptions.data.splice(index, 1);
+          $scope.lobs.splice(index, 1);
+        }
+
+        $scope.updateLob = function() {
+          var index = $scope.lobGridOptions.data.indexOf($scope.lob);
+          $scope.lobGridOptions.data[index] = $scope.lob;
+          $scope.lobs[index] = {
+            line_type_id: $scope.lob.lobType.id,
+            effective_date: $scope.lob.effective_date
+          };
+          $scope.lob = {};
         }
       },
       link: function(scope, element, attrs, formCtrl) {
