@@ -13,6 +13,7 @@ angular
     'companySearch',
     'companyOriginalApp',
     'ui.router',
+    'ngAnimate',
     'ng-token-auth'
   ])
   .config(function($stateProvider, $urlRouterProvider, $httpProvider, growlProvider, RestangularProvider) {

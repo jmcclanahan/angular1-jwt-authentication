@@ -15,7 +15,7 @@
 <div class="row">
   <div class="col-md-12">
     <button class="btn btn-primary" id="addRow" ng-click="addLob()" ng-show="!showUpdate" type="button">Add</button>
-    <button class="btn btn-success" id="updateRow" ng-click="updateLob(); showUpdate = false;" ng-show="showUpdate" type="button">Done Editing</button>
+    <button class="btn btn-success" id="updateRow" ng-cloak ng-click="updateLob(); showUpdate = false;" ng-show="showUpdate" type="button">Done Editing</button>
   </div>
 </div>
 <div class="row">

@@ -1,0 +1,15 @@
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+.wizard-container {
+  position: relative;
+  min-height: 200px;
+}
+
+.wizard-element.ng-enter {
+    -webkit-animation: fadeIn 1.5s;
+    -moz-animation: fadeIn 1.5s;
+    -o-animation: fadeIn 1.5s;
+    animation: fadeIn 1.5s;
+  }

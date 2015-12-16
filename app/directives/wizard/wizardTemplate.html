@@ -13,8 +13,8 @@
       </div>
       <div class="panel panel-primary row-spacer-20">
         <div class="panel-heading">{{ wizardCtrl.currentView.name }}</div>
-        <div class="panel-body">
-          <ng-include src="wizardCtrl.currentView.url"></ng-include>
+        <div class="panel-body wizard-container">
+          <div class="wizard-element" ng-cloak ng-include="wizardCtrl.currentView.url"></div>
         </div>
       </div>
       <div class="btn-group" role="group">
