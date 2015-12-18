@@ -4,23 +4,23 @@
       <div class="row">
         <div class="stepwizard">
           <div class="stepwizard-row">
-            <div class="stepwizard-step" ng-repeat="view in wizardCtrl.parent.views.data">
-              <button class="btn btn-circle" ng-class="view.active ? 'btn-primary' : 'btn-default'" ng-click="wizardCtrl.setCurrentView(view, wizardCtrl.parent.formName)" ng-disabled="view.disabled" type="button">{{ $index + 1 }}</button>
-              <p>{{ view.name }}</p>
+            <div class="stepwizard-step" ng-repeat="step in wizardCtrl.parent.steps.data">
+              <button class="btn btn-circle" ng-class="wizardCtrl.isCurrentStep($index) ? 'btn-primary' : 'btn-default'" ng-click="wizardCtrl.setCurrentStep($index)" ng-disabled="$index > wizardCtrl.step" type="button">{{ $index + 1 }}</button>
+              <p>{{ step.name }}</p>
             </div>
           </div>
         </div>
       </div>
       <div class="panel panel-primary row-spacer-20">
-        <div class="panel-heading">{{ wizardCtrl.currentView.name }}</div>
+        <div class="panel-heading">{{ wizardCtrl.getCurrentStep().name }}</div>
         <div class="panel-body wizard-container">
-          <div class="wizard-element" ng-cloak ng-include="wizardCtrl.currentView.url"></div>
+          <div class="wizard-element" ng-cloak ng-include="wizardCtrl.getCurrentStep().url"></div>
         </div>
       </div>
       <div class="btn-group" role="group">
-        <button class="btn btn-default" ng-click="wizardCtrl.previous()" ng-disabled="wizardCtrl.previousDisabled">Previous</button>
-        <button class="btn btn-default" ng-click="wizardCtrl.next(wizardCtrl.parent.formName)" ng-disabled="wizardCtrl.index === (wizardCtrl.parent.views.data.length - 1)">Next</button>
-        <button class="btn btn-default" ng-click="wizardCtrl.isFormValid(wizardCtrl.parent.formName) && wizardCtrl.parent.finish()" ng-disabled="wizardCtrl.finishDisabled">Finish</button>
+        <button class="btn btn-default" ng-click="wizardCtrl.handlePrevious()" ng-disabled="wizardCtrl.isFirstStep()">Previous</button>
+        <button class="btn btn-default" ng-click="wizardCtrl.handleNext()" ng-disabled="wizardCtrl.isLastStep()">Next</button>
+        <button class="btn btn-default" ng-click="wizardCtrl.isFormValid() && wizardCtrl.parent.finish()" ng-disabled="!wizardCtrl.isLastStep()">Finish</button>
         <button class="btn btn-default" ui-sref="home.dashboard">Cancel</button>
       </div>
     </ng-form>

@@ -23,22 +23,16 @@
        lobs: []
      };
 
-     companyOrigAppCtrl.views = {
+     companyOrigAppCtrl.steps = {
        data: [{
          name: 'Demographics',
-         url: 'pages/company/templates/demographics/companyDemographicsEditable.html',
-         disabled: false,
-         active: true
+         url: 'pages/company/templates/demographics/companyDemographicsEditable.html'
        }, {
          name: 'Company Types',
-         url: 'pages/company/templates/companyTypes/companyTypesEditable.html',
-         disabled: true,
-         active: false
+         url: 'pages/company/templates/companyTypes/companyTypesEditable.html'
        }, {
          name: 'Line of Business',
-         url: 'pages/company/templates/lineOfBusiness/lineOfBusinessEditable.html',
-         disabled: true,
-         active: false
+         url: 'pages/company/templates/lineOfBusiness/lineOfBusinessEditable.html'
        }]
      };
 
