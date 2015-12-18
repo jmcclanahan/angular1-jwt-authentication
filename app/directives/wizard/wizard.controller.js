@@ -17,13 +17,8 @@
      wizardCtrl.isFormValid = function() {
        $scope.$broadcast('show-errors-check-validity');
        wizardCtrl.form = $scope.$eval(wizardCtrl.parent.formName);
-       if (wizardCtrl.form.$invalid) {
-         wizardCtrl.form.$submitted = true;
-         return false;
-       } else {
-         wizardCtrl.form.$submitted = false;
-         return true;
-       }
+       wizardCtrl.form.$submitted = wizardCtrl.form.$invalid;
+       return !wizardCtrl.form.$submitted;
      }
 
      wizardCtrl.isFirstStep = function() {
