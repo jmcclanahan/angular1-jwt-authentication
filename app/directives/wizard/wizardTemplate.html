@@ -16,12 +16,14 @@
         <div class="panel-body wizard-container">
           <div class="wizard-element" ng-cloak ng-include="wizardCtrl.getCurrentStep().url"></div>
         </div>
-      </div>
-      <div class="btn-group" role="group">
-        <button class="btn btn-default" ng-click="wizardCtrl.handlePrevious()" ng-disabled="wizardCtrl.isFirstStep()">Previous</button>
-        <button class="btn btn-default" ng-click="wizardCtrl.handleNext()" ng-disabled="wizardCtrl.isLastStep()">Next</button>
-        <button class="btn btn-default" ng-click="wizardCtrl.isFormValid() && wizardCtrl.parent.finish()" ng-disabled="!wizardCtrl.isLastStep()">Finish</button>
-        <button class="btn btn-default" ui-sref="home.dashboard">Cancel</button>
+        <div class="panel-footer clearfix">
+          <div class="btn-group" role="group">
+            <button class="btn btn-default" ng-click="wizardCtrl.handlePrevious()" ng-disabled="wizardCtrl.isFirstStep()">Previous</button>
+            <button class="btn btn-default" ng-click="wizardCtrl.handleNext()" ng-disabled="wizardCtrl.isLastStep()">Next</button>
+            <button class="btn btn-default" ng-click="wizardCtrl.isFormValid() && wizardCtrl.parent.finish()" ng-disabled="!wizardCtrl.isLastStep()">Finish</button>
+            <button class="btn btn-default" ui-sref="home.dashboard">Cancel</button>
+          </div>
+        </div>
       </div>
     </ng-form>
   </div>
