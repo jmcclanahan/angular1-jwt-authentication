@@ -20,7 +20,6 @@
           <li class="active"><a ui-sref="home.dashboard">Home</a></li>
           <li><a ui-sref="home.companyOriginalApp">Company Original Application</a></li>
           <li><a ui-sref="home.companySearch">Company Search</a></li>
-          <li><a ui-sref="home.companies">Company</a></li>
           <li ng-show="!user.id"><a ui-sref="login">Sign in</a></li>
           <li ng-show="user.id"><a ng-click='homeCtrl.handleSignOut()' class="pointer">Sign out</a></li>
         </ul>
