@@ -5,7 +5,8 @@
         <div class="stepwizard">
           <div class="stepwizard-row">
             <div class="stepwizard-step" ng-repeat="step in wizardCtrl.parent.steps.data">
-              <button class="btn btn-circle" ng-class="wizardCtrl.isCurrentStep($index) ? 'btn-primary' : 'btn-default'" ng-click="wizardCtrl.setCurrentStep($index)" ng-disabled="$index > wizardCtrl.step" type="button">{{ $index + 1 }}</button>
+              <button class="btn btn-circle" ng-class="wizardCtrl.isCurrentStep($index) ? 'btn-primary' : 'btn-default'"
+                ng-click="wizardCtrl.setCurrentStep($index)" ng-disabled="$index > wizardCtrl.step" type="button">{{ $index + 1 }}</button>
               <p>{{ step.name }}</p>
             </div>
           </div>
