@@ -1,12 +1,8 @@
 # solar-frontend
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.12.1.
+This is the user-facing piece of my version of the SOLAR application. It
+is built with [Angularjs 1.3](https://github.com/angular/angular.js)
+and leverages [Restangular 1.4](https://github.com/mgonto/restangular)
+to communicate with the solar-backend project via JSON.
 
-## Build & development
-
-Run `grunt` for building and `grunt serve` for preview.
-
-## Testing
-
-Running `grunt test` will run the unit tests with karma.
+The build tools are as follows:
